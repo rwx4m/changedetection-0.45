@@ -1,4 +1,5 @@
-# CHANGEDETECTION.io 0.45.20
+# CHANGEDETECTION
+*Uji coba pada versi 0.45.20*
 
 # Cara Kerja
 ChangeDetection.io bekerja dengan cara mengambil snapshot dari halaman web yang dipantau pada interval waktu tertentu, lalu membandingkannya dengan snapshot sebelumnya untuk mendeteksi perubahan. Pengguna dapat menentukan URL halaman yang ingin dipantau untuk memantau area tertentu saja. Ketika perubahan terdeteksi, sistem akan mengirimkan notifikasi melalui metode yang dipilih, seperti Discord, Email, Slack, Telegram, API calls, dan lainnya. 
